@@ -14,6 +14,7 @@ import { useLogoutMutation } from '@/store/api/authApi';
 import { baseApi } from '@/store/api/baseApi';
 import { logout, selectAuthUser } from '@/store/slices/authSlice';
 import { cn } from '@/utils/cn';
+import { toast } from '@/lib/toast';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -32,7 +33,7 @@ export function Navbar() {
     try {
       await logoutRequest().unwrap();
     } catch {
-      // Clear local session even if the API call fails.
+      toast.error('Failed to logout');
     }
 
     removeAccessTokenCookie();

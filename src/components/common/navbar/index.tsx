@@ -54,7 +54,7 @@ export function Navbar() {
             >
               <Menu />
             </SheetTrigger>
-            <SheetContent side="left" className="w-72">
+            <SheetContent side="left" className="w-72 data-[side=left]:border-r-0">
               <SheetHeader>
                 <SheetTitle>{APP_NAME}</SheetTitle>
               </SheetHeader>

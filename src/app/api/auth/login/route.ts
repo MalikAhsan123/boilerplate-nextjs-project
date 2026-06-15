@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import type { LoginRequest, LoginResponse } from '@/types/authTypes';
+import type { LoginRequest, LoginResponse } from '@/types/authTypes/index.ts';
 
 export async function POST(request: Request) {
   let body: LoginRequest;

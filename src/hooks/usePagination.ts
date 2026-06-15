@@ -1,0 +1,27 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+
+interface UsePaginationOptions {
+  initialPage?: number;
+  pageSize?: number;
+}
+
+export function usePagination({ initialPage = 1, pageSize = 10 }: UsePaginationOptions = {}) {
+  const [page, setPage] = useState(initialPage);
+
+  const pagination = useMemo(
+    () => ({
+      page,
+      pageSize,
+      offset: (page - 1) * pageSize,
+      setPage,
+      nextPage: () => setPage((current) => current + 1),
+      prevPage: () => setPage((current) => Math.max(1, current - 1)),
+      reset: () => setPage(initialPage),
+    }),
+    [page, pageSize, initialPage],
+  );
+
+  return pagination;
+}

@@ -2,10 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-interface UsePaginationOptions {
-  initialPage?: number;
-  pageSize?: number;
-}
+import type { UsePaginationOptions } from '@/types';
 
 export function usePagination({ initialPage = 1, pageSize = 10 }: UsePaginationOptions = {}) {
   const [page, setPage] = useState(initialPage);

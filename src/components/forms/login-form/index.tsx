@@ -3,13 +3,15 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { InputField } from '@/components/common/input-field';
+import { PasswordField } from '@/components/common/password-field';
+import { PhoneField } from '@/components/common/phone-field';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { setAccessTokenCookie } from '@/lib/auth/clientCookies';
 import { toast } from '@/lib/toast';
 import { cn } from '@/lib/utils';
-import { loginSchema, type LoginFormValues } from '@/schemas/authSchema';
+import { loginSchema } from '@/schemas/authSchema';
+import type { LoginFormValues } from '@/types/authTypes';
 import { useAppDispatch } from '@/store';
 import { useLoginMutation } from '@/store/api/authApi';
 import { setCredentials } from '@/store/slices/authSlice';
@@ -36,6 +38,7 @@ export function LoginForm() {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormValues>({
@@ -43,12 +46,15 @@ export function LoginForm() {
     defaultValues: {
       email: '',
       password: '',
+      phoneNumber: '',
     },
   });
 
   const onSubmit = async (values: LoginFormValues) => {
+    const { email, password } = values;
+
     try {
-      const response = await login(values).unwrap();
+      const response = await login({ email, password }).unwrap();
       setAccessTokenCookie(response.token);
       dispatch(setCredentials(response));
       toast.success(`Welcome back, ${response.user.name}!`);
@@ -60,35 +66,31 @@ export function LoginForm() {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          autoComplete="email"
-          placeholder="you@example.com"
-          aria-invalid={Boolean(errors.email)}
-          {...register('email')}
-        />
-        {errors.email ? (
-          <p className="text-sm text-destructive">{errors.email.message}</p>
-        ) : null}
-      </div>
+      <InputField
+        label="Email"
+        type="email"
+        autoComplete="email"
+        placeholder="you@example.com"
+        error={errors.email?.message}
+        {...register('email')}
+      />
 
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="password">Password</Label>
-        <Input
-          id="password"
-          type="password"
-          autoComplete="current-password"
-          placeholder="Enter your password"
-          aria-invalid={Boolean(errors.password)}
-          {...register('password')}
-        />
-        {errors.password ? (
-          <p className="text-sm text-destructive">{errors.password.message}</p>
-        ) : null}
-      </div>
+      <PasswordField
+        label="Password"
+        autoComplete="current-password"
+        placeholder="Enter your password"
+        error={errors.password?.message}
+        {...register('password')}
+      />
+
+      {/* <PhoneField
+        label="Phone Number"
+        name="phoneNumber"
+        control={control}
+        required
+        defaultCountry="CA"
+        error={errors.phoneNumber?.message}
+      /> */}
 
       <Button type="submit" className={cn('w-full')} size="lg" loading={isLoading}>
         Sign in

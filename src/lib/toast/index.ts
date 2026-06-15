@@ -6,9 +6,9 @@ import {
   type UpdateOptions,
 } from 'react-toastify';
 
-const DEFAULT_AUTO_CLOSE = 4000;
+import type { ToastInput } from '@/types';
 
-export type ToastInput = ToastContent | (ToastOptions & { message?: ToastContent });
+const DEFAULT_AUTO_CLOSE = 4000;
 
 function resolveInput(input: ToastInput): { content: ToastContent; options: ToastOptions } {
   if (typeof input === 'string' || typeof input === 'number') {

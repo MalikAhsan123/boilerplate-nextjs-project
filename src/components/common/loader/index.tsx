@@ -3,11 +3,7 @@
 import { Loader2 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-
-interface LoaderProps {
-  message?: string;
-  className?: string;
-}
+import type { LoaderProps } from '@/types';
 
 export function Loader({ message = 'Loading...', className }: LoaderProps) {
   return (

@@ -4,11 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { Button } from '@/components/ui/button';
-
-interface ErrorProps {
-  error: Error & { digest?: string };
-  reset: () => void;
-}
+import type { ErrorProps } from '@/types';
 
 export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {

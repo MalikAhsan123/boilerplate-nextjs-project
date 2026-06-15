@@ -7,15 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-
-interface ModalDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  title?: string;
-  description?: string;
-  children: React.ReactNode;
-  className?: string;
-}
+import type { ModalDialogProps } from '@/types';
 
 export function ModalDialog({
   open,

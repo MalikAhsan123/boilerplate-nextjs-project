@@ -72,6 +72,18 @@ body {
   --info-blue: oklch(0.55 0.15 240);
   --warning-amber: oklch(0.75 0.15 75);
 
+  /* button */
+  --btn-primary: #37C5D9;
+  --btn-primary-pressed: #249FB1;
+  --btn-primary-disabled-bg: #c9ebf2;
+  --btn-primary-disabled-fg: #8bd4e3;
+  --btn-success: #4fd19a;
+  --btn-success-pressed: #3fb882;
+  --btn-dark: #1a1a1a;
+  --btn-dark-pressed: #333333;
+  --btn-muted: #757575;
+  --btn-disabled: #d1d1d1;
+
   /* shadcn/ui */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -251,6 +263,18 @@ body {
   --color-success-green: var(--success-green);
   --color-info-blue: var(--info-blue);
   --color-warning-amber: var(--warning-amber);
+
+  /* button */
+  --color-btn-primary: var(--btn-primary);
+  --color-btn-primary-pressed: var(--btn-primary-pressed);
+  --color-btn-primary-disabled-bg: var(--btn-primary-disabled-bg);
+  --color-btn-primary-disabled-fg: var(--btn-primary-disabled-fg);
+  --color-btn-success: var(--btn-success);
+  --color-btn-success-pressed: var(--btn-success-pressed);
+  --color-btn-dark: var(--btn-dark);
+  --color-btn-dark-pressed: var(--btn-dark-pressed);
+  --color-btn-muted: var(--btn-muted);
+  --color-btn-disabled: var(--btn-disabled);
 
   /* Font-size */
   --text-h1: var(--h1);

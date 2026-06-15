@@ -9,17 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-
-interface ConfirmDialogProps {
-  opened: boolean;
-  title: string;
-  message: string;
-  confirmLabel?: string;
-  cancelLabel?: string;
-  loading?: boolean;
-  onConfirm: () => void;
-  onCancel: () => void;
-}
+import type { ConfirmDialogProps } from '@/types';
 
 export function ConfirmDialog({
   opened,

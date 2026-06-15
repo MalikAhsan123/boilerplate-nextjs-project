@@ -2,11 +2,9 @@
 
 import { ToastContainer } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
+import type { ToastProviderProps } from '@/types';
 
-interface ToastProviderProps {
-  children: React.ReactNode;
-}
+import 'react-toastify/dist/ReactToastify.css';
 
 export function ToastProvider({ children }: ToastProviderProps) {
   return (
